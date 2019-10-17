@@ -38,6 +38,25 @@ ys_hg_prompt_info() {
 	fi
 }
 
+nix_pre() {
+    if [[ -n "$IN_NIX_SHELL" ]]; then
+        if [[ -n $NIX_SHELL_PACKAGES ]]; then
+            local package_names=""
+            local packages=($NIX_SHELL_PACKAGES)
+            for package in $packages; do
+                package_names+=" ${package##*.}"
+            done
+            echo -n "{ $package_names } "
+        elif [[ -n $name ]]; then
+            local cleanName=${name#interactive-}
+            cleanName=${cleanName%-environment}
+            echo -n "{ $cleanName } "
+        else
+            echo èn "nix-shell {} "
+        fi
+    fi
+}
+
 # Prompt format: \n # USER at MACHINE in DIRECTORY on git:BRANCH STATE [TIME] \n $
 PROMPT="
 %{$terminfo[bold]$fg[blue]%}#%{$reset_color%} \
@@ -49,7 +68,7 @@ PROMPT="
 ${hg_info}\
 ${git_info} \
 %{$fg[white]%}[%*]
-%{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
+%{$fg[yellow]%}$(nix_pre)%{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
 
 if [[ "$USER" == "root" ]]; then
 PROMPT="
@@ -62,5 +81,5 @@ PROMPT="
 ${hg_info}\
 ${git_info} \
 %{$fg[white]%}[%*]
-%{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
+%{$fg[yellow]%}$(nix_pre)%{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
 fi
