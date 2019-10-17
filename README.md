@@ -1,4 +1,6 @@
-## Honukai theme and colors for Oh My ZSH and iTerm by [@oskar](https://twitter.com/oskar)
+## Honukai theme and colors for Oh My ZSH by [@oskar](https://twitter.com/oskar) adapted for Nix Shell
+
+**Note:** Too lazy to rewrite documentation, it adds the nix-shell name from [this plugin](https://github.com/chisui/zsh-nix-shell) behind the red arrow on the second line. Might also add support for things such as virtualenv, and even custom prefixes?
 
 ![](https://raw.githubusercontent.com/oskarkrawczyk/honukai-iterm/master/honukai.png)
 
