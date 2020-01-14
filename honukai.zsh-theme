@@ -52,7 +52,7 @@ nix_pre() {
             cleanName=${cleanName%-environment}
             echo -n "{ $cleanName } "
         else
-            echo èn "nix-shell {} "
+            echo -n "nix-shell {} "
         fi
     fi
 }
