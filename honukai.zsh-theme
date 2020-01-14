@@ -46,7 +46,7 @@ nix_pre() {
             for package in $packages; do
                 package_names+=" ${package##*.}"
             done
-            echo -n "{ $package_names } "
+            echo -n "{$package_names } "
         elif [[ -n $name ]]; then
             local cleanName=${name#interactive-}
             cleanName=${cleanName%-environment}
