@@ -68,7 +68,7 @@ PROMPT="
 ${hg_info}\
 ${git_info} \
 %{$fg[white]%}[%*]
-%{$fg[yellow]%}$(nix_pre)%{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
+%{$(iterm2_prompt_mark 2>/dev/null)%}%{$fg[yellow]%}$(nix_pre)%{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
 
 if [[ "$USER" == "root" ]]; then
 PROMPT="
@@ -81,5 +81,5 @@ PROMPT="
 ${hg_info}\
 ${git_info} \
 %{$fg[white]%}[%*]
-%{$fg[yellow]%}$(nix_pre)%{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
+%{$(iterm2_prompt_mark 2>/dev/null)%}%{$fg[yellow]%}$(nix_pre)%{$terminfo[bold]$fg[red]%}→ %{$reset_color%}"
 fi
